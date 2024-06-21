@@ -41,13 +41,11 @@ router.get("/login", fileUpload(), async (req, res) => {
     if (hash !== thisUser[0].hash) {
       return res.status(400).json({ message: "Mail or password invalid" });
     }
-    return res
-      .status(202)
-      .json({
-        username: thisUser[0].username,
-        token: thisUser[0].token,
-        mail: thisUser[0].mail,
-      });
+    return res.status(202).json({
+      username: thisUser[0].username,
+      token: thisUser[0].token,
+      mail: thisUser[0].mail,
+    });
   } catch (error) {
     return res.status(500).json({ message: "Error DB" });
   }

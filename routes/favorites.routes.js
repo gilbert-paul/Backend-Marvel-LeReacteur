@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const Favorite = require("../models/Favorite.js");
-const isAuthenticated = require("../utils/isAuthenticated.js");
+const isAuthenticated = require("../middlewares/isAuthenticated.js");
 const User = require("../models/User.js");
 
 router.post("/add", isAuthenticated, async (req, res) => {
