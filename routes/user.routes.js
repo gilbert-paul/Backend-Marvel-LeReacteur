@@ -14,6 +14,13 @@ router.post("/signup", fileUpload(), async (req, res) => {
         .status(400)
         .json({ message: "You need to complete mail, username & password" });
     }
+    const mailAlreadyUsed = await User.findOne({mail:mail})
+    if(mailAlreadyUsed){
+      return res
+      .status(400)
+      .json({ message: "Mail already used" });
+  }
+    }
     const salt = uid2(16);
     const hash = SHA256(password + salt).toString(encBase64);
     const token = uid2(20);
